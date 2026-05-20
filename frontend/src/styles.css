@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&family=Metamorphous&family=Pirata+One&family=Roboto:wght@400;700&display=swap');
+
+:root {
+  --parchment: #f4e4bc;
+  --dark-parchment: #e2d1a6;
+  --ink: #2c1810;
+  --accent-red: #8b0000;
+  --accent-gold: #b8860b;
+  --border-color: #5d4037;
+  --shadow: rgba(0,0,0,0.3);
+
+  font-family: 'Roboto', serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background-color: #1a1a1a;
+  background-image: url('https://www.transparenttextures.com/patterns/dark-leather.png');
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: var(--accent-red);
+  background-image: linear-gradient(to bottom, #a52a2a, #8b0000);
+  box-shadow: 0 4px 8px var(--shadow);
+  border-bottom: 3px solid var(--accent-gold);
+}
+
+.brand {
+  font-family: 'Pirata One', cursive;
+  font-size: 2rem;
+  color: var(--parchment);
+  text-decoration: none;
+  text-shadow: 2px 2px 4px black;
+}
+
+.container {
+  padding: 2rem;
+  flex: 1;
+  max-width: 1100px;
+  margin: 20px auto;
+  width: 95%;
+  background-color: var(--parchment);
+  background-image: url('https://www.transparenttextures.com/patterns/old-map.png');
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  border: 1px solid var(--border-color);
+  position: relative;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  top: 10px; left: 10px; right: 10px; bottom: 10px;
+  border: 2px solid var(--border-color);
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+h2, h3 {
+  font-family: 'MedievalSharp', cursive;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--accent-red);
+  padding-bottom: 5px;
+  margin-top: 0;
+}
+
+.btn {
+  font-family: 'Metamorphous', cursive;
+  background: var(--accent-red);
+  color: var(--parchment);
+  border: 1px solid var(--accent-gold);
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 2px 2px 4px var(--shadow);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.btn:hover {
+  background: #a52a2a;
+  transform: translateY(-1px);
+  box-shadow: 3px 3px 6px var(--shadow);
+}
+
+.btn.small { padding: 0.3rem 0.6rem; font-size: 0.7rem; }
+.btn.danger { background: #5d4037; }
+.btn.danger:hover { background: #3e2723; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background: var(--dark-parchment);
+  padding: 1.5rem;
+  border: 2px solid var(--border-color);
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.muted { color: #5d4037; font-weight: bold; margin-bottom: 1rem; }
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.form label {
+  display: flex;
+  flex-direction: column;
+  font-family: 'MedievalSharp', cursive;
+  font-weight: bold;
+}
+
+.form input, .form textarea {
+  margin-top: 0.5rem;
+  padding: 0.7rem;
+  border: 1px solid var(--border-color);
+  background: rgba(255,255,255,0.3);
+  font-family: 'Roboto', serif;
+  font-size: 1rem;
+}
+
+.form .full-width { grid-column: span 2; }
+@media (max-width: 600px) { .form .full-width { grid-column: span 1; } .form { grid-template-columns: 1fr; } }
+
+.row { display: flex; gap: 1rem; grid-column: span 2; }
+@media (max-width: 600px) { .row { flex-direction: column; grid-column: span 1; } }
+
+.detail-header {
+  border-bottom: 3px double var(--accent-red);
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+}
+
+.details-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.detail-item {
+  border: 1px solid var(--border-color);
+  padding: 0.5rem;
+  background: rgba(0,0,0,0.05);
+}
+
+.detail-item dt {
+  font-family: 'MedievalSharp', cursive;
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: var(--accent-red);
+  text-transform: uppercase;
+}
+
+.detail-item dd {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.footer {
+  padding: 2rem;
+  text-align: center;
+  color: var(--parchment);
+  font-family: 'MedievalSharp', cursive;
+}
+
+/* Specific styling for stats to look like d&d blocks */
+.stat-box {
+  text-align: center;
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--parchment);
+  margin: 0 auto;
+}

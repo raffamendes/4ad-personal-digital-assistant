@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    image: 4ad-character-sheet:latest
+    ports:
+      - "8080:8080"
+    environment:
+      # Connects to the redis service defined below using the container name
+      - QUARKUS_REDIS_HOSTS=redis://redis:6379
+      - QUARKUS_HTTP_HOST=0.0.0.0
+    depends_on:
+      - redis
+    networks:
+      - 4ad-network
+
+  redis:
+    image: redis:8.6.3-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - 4ad-network
+    command: redis-server --appendonly yes
+
+networks:
+  4ad-network:
+    driver: bridge
+
+volumes:
+  redis_data:
